@@ -35,12 +35,9 @@ class Gencontrol(Base):
             'initramfs-generators': config.SchemaItemList(),
             'check-size': config.SchemaItemInteger(),
             'check-size-with-dtb': config.SchemaItemBoolean(),
+            'check-uncompressed-size': config.SchemaItemInteger(),
         },
         'relations': {
-        },
-        'xen': {
-            'flavours': config.SchemaItemList(),
-            'versions': config.SchemaItemList(),
         },
         'packages': {
             'docs': config.SchemaItemBoolean(),
@@ -121,9 +118,33 @@ class Gencontrol(Base):
         if self.config.merge('packages').get('tools', True):
             packages.extend(self.process_packages(self.templates["control.tools"], self.vars))
 
-        self._substitute_file('lintian-overrides.perf', self.vars,
+        self._substitute_file('perf.lintian-overrides', self.vars,
                               'debian/linux-perf-%s.lintian-overrides' %
                               self.vars['version'])
+
+    def do_indep_featureset_setup(self, vars, makeflags, featureset, extra):
+        makeflags['LOCALVERSION'] = vars['localversion']
+        kernel_arches = set()
+        for arch in iter(self.config['base', ]['arches']):
+            if self.config.get_merge('base', arch, featureset, None, 'flavours'):
+                kernel_arches.add(self.config['base', arch]['kernel-arch'])
+        makeflags['ALL_KERNEL_ARCHES'] = ' '.join(sorted(list(kernel_arches)))
+
+        vars['featureset_desc'] = ''
+        if featureset != 'none':
+            desc = self.config[('description', None, featureset)]
+            desc_parts = desc['parts']
+            vars['featureset_desc'] = (' with the %s featureset' %
+                                       desc['part-short-%s' % desc_parts[0]])
+
+    def do_indep_featureset_packages(self, packages, makefile, featureset,
+                                     vars, makeflags, extra):
+        headers_featureset = self.templates["control.headers.featureset"]
+        packages.extend(self.process_packages(headers_featureset, vars))
+
+        cmds_binary_arch = ["$(MAKE) -f debian/rules.real binary-indep-featureset %s" %
+                            makeflags]
+        makefile.add('binary-indep_%s_real' % featureset, cmds=cmds_binary_arch)
 
     arch_makeflags = (
         ('kernel-arch', 'KERNEL_ARCH', False),
@@ -247,15 +268,6 @@ class Gencontrol(Base):
         config_base = self.config.merge('base', arch, featureset)
         makeflags['LOCALVERSION_HEADERS'] = vars['localversion_headers'] = vars['localversion']
 
-    def do_featureset_packages(self, packages, makefile, arch, featureset, vars, makeflags, extra):
-        headers_featureset = self.templates["control.headers.featureset"]
-        package_headers = self.process_package(headers_featureset[0], vars)
-
-        merge_packages(packages, (package_headers,), arch)
-
-        cmds_binary_arch = ["$(MAKE) -f debian/rules.real binary-arch-featureset %s" % makeflags]
-        makefile.add('binary-arch_%s_%s_real' % (arch, featureset), cmds=cmds_binary_arch)
-
     flavour_makeflags_base = (
         ('compiler', 'COMPILER', False),
         ('kernel-arch', 'KERNEL_ARCH', False),
@@ -377,15 +389,6 @@ class Gencontrol(Base):
         image = self.templates[build_signed and "control.image-unsigned"
                                or "control.image"]
 
-        config_entry_xen = self.config.merge('xen', arch, featureset, flavour)
-        if config_entry_xen:
-            p = self.process_packages(self.templates['control.xen-linux-system'], vars)
-            l = PackageRelationGroup()
-            for xen_flavour in config_entry_xen['flavours']:
-                l.append("xen-system-%s" % xen_flavour)
-            p[0]['Depends'].append(l)
-            packages_dummy.extend(p)
-
         vars.setdefault('desc', None)
 
         image_main = self.process_real_image(image[0], image_fields, vars)
@@ -496,9 +499,11 @@ class Gencontrol(Base):
             self._substitute_file('image.%s' % name, vars,
                                   'debian/%s.%s' % (image_main['Package'], name))
         if build_debug:
-            self._substitute_file('image-dbg.lintian-override', vars,
-                                  'debian/linux-image-%s%s-dbgsym.lintian-overrides' %
+            debug_lintian_over = ('debian/linux-image-%s%s-dbg.lintian-overrides' %
                                   (vars['abiname'], vars['localversion']))
+            self._substitute_file('image-dbg.lintian-overrides', vars,
+                                  debug_lintian_over)
+            os.chmod(debug_lintian_over, 0o755)
 
     def process_changelog(self):
         act_upstream = self.changelog[0].version.upstream

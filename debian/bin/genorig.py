@@ -27,11 +27,11 @@ class Main(object):
         if override_version:
             version = VersionLinux('%s-0' % override_version)
 
-        self.version_dfsg = version.linux_dfsg
-        if self.version_dfsg is None:
-            self.version_dfsg = '0'
+        self.version_linaro = version.linux_linaro
+        if self.version_linaro is None:
+            self.version_linaro = '0'
 
-        self.log('Using source name %s, version %s, dfsg %s\n' % (source, version.upstream, self.version_dfsg))
+        self.log('Using source name %s, version %s, linaro %s\n' % (source, version.upstream, self.version_linaro))
 
         self.orig = '%s-%s' % (source, version.upstream)
         self.orig_tar = '%s_%s.orig.tar.xz' % (source, version.upstream)
@@ -68,6 +68,15 @@ class Main(object):
 
     def upstream_export(self, input_repo):
         self.log("Exporting %s from %s\n" % (self.tag, input_repo))
+
+        gpg_wrapper = os.path.join(os.getcwd(),
+                                   "debian/bin/git-tag-gpg-wrapper")
+        verify_proc = subprocess.Popen(['git',
+                                        '-c', 'gpg.program=%s' % gpg_wrapper,
+                                        'tag', '-v', self.tag],
+                                        cwd=input_repo)
+        if verify_proc.wait():
+            self.log("GPG verify failed  %s from %s\n" % (self.tag, input_repo))
 
         archive_proc = subprocess.Popen(['git', 'archive', '--format=tar',
                                          '--prefix=%s/' % self.orig, self.tag],
