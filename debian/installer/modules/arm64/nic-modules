@@ -7,6 +7,3 @@ stmmac-platform
 dwmac-generic
 dwmac-ipq806x
 xgene-enet
-nicpf ?
-nicvf ?
-thunder_bgx ?
