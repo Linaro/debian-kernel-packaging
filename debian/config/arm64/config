@@ -255,12 +255,6 @@ CONFIG_ARM_SCPI_POWER_DOMAIN=m
 CONFIG_RASPBERRYPI_FIRMWARE=y
 
 ##
-## file: drivers/firmware/efi/Kconfig
-##
-CONFIG_EFI_VARS_PSTORE=y
-CONFIG_EFI_VARS_PSTORE_DEFAULT_DISABLE=y
-
-##
 ## file: drivers/gpio/Kconfig
 ##
 CONFIG_GPIOLIB=y
@@ -1187,11 +1181,6 @@ CONFIG_QCOM_WDT=m
 CONFIG_MESON_GXBB_WATCHDOG=m
 CONFIG_MESON_WATCHDOG=m
 CONFIG_BCM2835_WDT=m
-
-##
-## file: fs/pstore/Kconfig
-##
-CONFIG_PSTORE=y
 
 ##
 ## file: mm/Kconfig
