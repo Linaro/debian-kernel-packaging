@@ -1153,12 +1153,6 @@ CONFIG_VFIO_NOIOMMU=y
 CONFIG_VFIO_PCI=m
 
 ##
-## file: drivers/vfio/platform/Kconfig
-##
-CONFIG_VFIO_PLATFORM=m
-CONFIG_VFIO_AMBA=m
-
-##
 ## file: drivers/video/backlight/Kconfig
 ##
 CONFIG_BACKLIGHT_GENERIC=m
