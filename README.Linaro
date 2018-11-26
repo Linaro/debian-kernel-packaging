@@ -1,0 +1,8 @@
+This repository keeps Linaro's copy of Debian kernel packaging.
+
+We did some changes compared to Debian:
+
+- enabled several server related options on arm64
+- enabled support for arm64 servers (plan to merge it upstream)
+- disabled Android support
+- graphics support for VM instances is enabled (virtio-gpu)
