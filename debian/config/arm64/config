@@ -111,12 +111,6 @@ CONFIG_CMA_SIZE_MBYTES=64
 ##
 CONFIG_BCMA_DRIVER_GMAC_CMN=y
 CONFIG_BCMA_DRIVER_GPIO=y
-
-##
-## file: drivers/block/Kconfig
-##
-CONFIG_VIRTIO_BLK_SCSI=y
-
 ##
 ## file: drivers/bluetooth/Kconfig
 ##
