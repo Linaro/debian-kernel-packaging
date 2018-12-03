@@ -1,0 +1,40 @@
+--- changelog
++++ changelog
+@@ -18,10 +18,6 @@ linux (4.19.5-1~exp1) experimental; urgency=medium
+   * Move generation of CONFIG_BUILD_SALT to gencontrol.py
+   * [x86] hyperv-daemons: Make all services conditional on device existence
+   * debian/rules.real: Fix build failure with pkg.linux.nosource profile
+-  * debian/source/options: Delete redundant compression setting; satisfy
+-    lintian
+-  * Documentation/media: uapi: Explicitly say there are no Invariant Sections
+-    (Closes: #698668)
+ 
+   [ Karsten Merker ]
+   * [riscv64] Build a kernel image and udebs for riscv64 (Closes: #908161)
+@@ -35,25 +31,11 @@ linux (4.19.5-1~exp1) experimental; urgency=medium
+   * [cloud-amd64] Enable Amazon ENA ethernet driver (Closes: #910049)
+ 
+   [ Romain Perier ]
+-  * [rt] Update to 4.19.1-rt3
+-  * [rt] Update patch arm-disable-NEON-in-kernel-mode.patch, so it can be
+-    applied onto 4.19.2
+-  * [rt] Update patch
+-    irq-allow-disabling-of-softirq-processing-in-irq-thread-context.patch, so
+-    it can be applied onto 4.19.2
++  * [rt] Update to 4.19-rt1
+   * [amd64] Enable AMD pinctrl driver (Closes: #908954)
+   * Enable Diffie-Hellman operations on retained keys (Closes: #911998)
+   * Update patch features/all/lockdown/enable-cold-boot-attack-mitigation.patch,
+     so it can be applied onto 4.19.2
+-  * [x86] Enable DisplayPort CEC-Tunneling-over-AUX HDMI support
+-    (Closes: #913199)
+-
+-  [ Marcin Juszkiewicz ]
+-  * [arm64] Enable ACPI IMPI
+-  * [arm64] Enable IMPI watchdog and power off support
+-  * [arm64] Enable PCI Express hotplug
+-  * [arm64] Enable PMU for several server cpus
+-  * [arm64] Enable HiSilicon LPC for serial/ipmi access
+ 
+  -- Bastian Blank <waldi@debian.org>  Tue, 27 Nov 2018 20:06:42 +0100
+ 
