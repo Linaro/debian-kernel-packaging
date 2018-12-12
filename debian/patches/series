@@ -130,6 +130,7 @@ features/all/lockdown/arm64-add-kernel-config-option-to-lock-down-when.patch
 
 # Security fixes
 debian/i386-686-pae-pci-set-pci-nobios-by-default.patch
+bugfix/all/vhost-vsock-fix-use-after-free-in-network-stack-call.patch
 
 # Fix exported symbol versions
 bugfix/all/module-disable-matching-missing-version-crc.patch
@@ -152,5 +153,8 @@ bugfix/x86/tools-turbostat-Add-checks-for-failure-of-fgets-and-.patch
 
 # wireless: Disable regulatory.db direct loading (until we sort out signing)
 debian/wireless-disable-regulatory.db-direct-loading.patch
+
+# overlay: allow mounting in user namespaces
+debian/overlayfs-permit-mounts-in-userns.patch
 
 # ABI maintenance
