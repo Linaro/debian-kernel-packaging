@@ -4,6 +4,7 @@ virtio_balloon
 virtio_scsi
 virtio_input
 virtio_console
+virtio-gpu
 
 # Some architectures do not have PCI bus
 virtio_pci ?
