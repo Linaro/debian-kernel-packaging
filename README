@@ -2,4 +2,4 @@ This repository keeps Linaro's copy of Debian kernel packaging rules with
 some AArch64 related changes applied - mostly enabling support for some
 servers and server related things.
 
-The main branch is rpb-stretch
+The main branch is rpb-stretch-2019
