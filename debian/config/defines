@@ -140,7 +140,7 @@ recommends: apparmor
 
 [relations]
 # compilers
-gcc-6: gcc-6 <!stage1 !cross>, gcc-6-@gnu-type-package@ <!stage1 cross>
+gcc-6: gcc-6 <!stage1 !cross !pkg.linux.nokernel>, gcc-6-@gnu-type-package@ <!stage1 cross !pkg.linux.nokernel>
 
 # initramfs-generators
 initramfs-fallback: linux-initramfs-tool
