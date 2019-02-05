@@ -101,6 +101,25 @@ linux (4.19.17-1) UNRELEASED; urgency=medium
   [ Marcin Juszkiewicz ]
   * [arm64] enable ARM_CCI_PMU so ARM_CCI400_PMU and ARM_CCI5xx_PMU options
     get really enabled.
+  * [arm64] enable PCI_PRI, PCI_PASID as PCI can be behind IOMMU in servers.
+
+  [ Salvatore Bonaccorso ]
+  * [x86] kvmclock: set offset for kvm unstable clock (Closes: #918036)
+
+  [ Hideki Yamane ]
+  * [x86] Enable Touchpad support on Gemini Lake via CONFIG_PINCTRL_GEMINILAKE
+    (Closes: #917388)
+  * [x86] Enable SND_SOC_ES8316 and Baytrail & Cherrytrail with ES8316 codec,
+    too (Closes: #918589)
+  * hwmon: Enable CONFIG_SENSORS_NCT7802,NCT7904,NPCM7XX,ASPEED and W83773G
+    to use HWMON hardware (Closes: #912597)
+
+  [ Vagrant Cascadian ]
+  * [armhf] Enable CONFIG_MMC_SDHCI_OMAP=m, used on DRA7 and related SoCs.
+
+  [ Uwe Kleine-König ]
+  * [armel] add spi-orion to mtd.udeb to be able to access spi flash on e.g.
+    qnap ts-21x. (Closes: #920607)
 
  -- Luca Boccassi <bluca@debian.org>  Fri, 18 Jan 2019 19:09:06 +0000
 
