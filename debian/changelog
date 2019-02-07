@@ -97,6 +97,10 @@ linux (4.19.17-1) UNRELEASED; urgency=medium
     build-deps
   * [i386] debian/control: Fix cross-compiler build-dependency
   * debian/README.source: Document how to run kconfigeditor2
+  * [armhf,arm64] serial: 8250: Disable SERIAL_8250_DEPRECATED_OPTIONS
+  * percpu: convert spin_lock_irq to spin_lock_irqsave (fixes boot failure with
+    alpha-generic flavour)
+  * debian/tests/python: Fix spurious failure due to misuse of stderr
 
   [ Marcin Juszkiewicz ]
   * [arm64] enable ARM_CCI_PMU so ARM_CCI400_PMU and ARM_CCI5xx_PMU options
@@ -113,6 +117,9 @@ linux (4.19.17-1) UNRELEASED; urgency=medium
     too (Closes: #918589)
   * hwmon: Enable CONFIG_SENSORS_NCT7802,NCT7904,NPCM7XX,ASPEED and W83773G
     to use HWMON hardware (Closes: #912597)
+  * net: can: Enable CONFIG_CAN_PEAK_PCIEFD for a PCI express CAN Bus adapter
+    (Closes: #920809)
+  * [armhf] Enable CONFIG_SENSORS_LM75 for armhf (Closes: #918114)
 
   [ Vagrant Cascadian ]
   * [armhf] Enable CONFIG_MMC_SDHCI_OMAP=m, used on DRA7 and related SoCs.
