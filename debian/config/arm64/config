@@ -88,7 +88,7 @@ CONFIG_ACPI_APEI_EINJ=m
 ##
 ## file: drivers/android/Kconfig
 ##
-# CONFIG_ANDROID is not set
+CONFIG_ANDROID=y
 
 ##
 ## file: drivers/ata/Kconfig
