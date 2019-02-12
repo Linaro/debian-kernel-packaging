@@ -88,7 +88,7 @@ CONFIG_ACPI_APEI_EINJ=m
 ##
 ## file: drivers/android/Kconfig
 ##
-# CONFIG_ANDROID is not set
+CONFIG_ANDROID=y
 
 ##
 ## file: drivers/ata/Kconfig
@@ -217,12 +217,6 @@ CONFIG_PL330_DMA=m
 CONFIG_TEGRA20_APB_DMA=y
 CONFIG_TEGRA210_ADMA=y
 CONFIG_XGENE_DMA=m
-
-##
-## file: drivers/dma/dw/Kconfig
-##
-CONFIG_DW_DMAC=m
-CONFIG_DW_DMAC_PCI=m
 
 ##
 ## file: drivers/dma/qcom/Kconfig
