@@ -4,14 +4,14 @@ linux (4.19.23-1) UNRELEASED; urgency=medium
     https://www.kernel.org/pub/linux/kernel/v4.x/ChangeLog-4.19.21
     - devres: Align data[] to ARCH_KMALLOC_MINALIGN
     - drm/bufs: Fix Spectre v1 vulnerability
-    - staging: iio: adc: ad7280a: handle error from __ad7280_read32()
     - drm/vgem: Fix vgem_init to get drm device available.
     - [arm*] pinctrl: bcm2835: Use raw spinlock for RT compatibility
     - [x86] ASoC: Intel: mrfld: fix uninitialized variable access
     - gpiolib: Fix possible use after free on label
     - [armhf] drm/sun4i: Initialize registers in tcon-top driver
     - genirq/affinity: Spread IRQs to all available NUMA nodes
-    - gpu: ipu-v3: image-convert: Prevent race between run and unprepare
+    - [armhf] gpu: ipu-v3: image-convert: Prevent race between run and
+      unprepare
     - wil6210: fix reset flow for Talyn-mb
     - wil6210: fix memory leak in wil_find_tx_bcast_2
     - ath10k: assign 'n_cipher_suites' for WCN3990
@@ -31,15 +31,12 @@ linux (4.19.23-1) UNRELEASED; urgency=medium
     - [mips] Boston: Disable EG20T prefetch
     - dpaa2-ptp: defer probe when portal allocation failed
     - iwlwifi: fw: do not set sgi bits for HE connection
-    - staging:iio:ad2s90: Make probe handle spi_setup failure
     - fpga: altera-cvp: Fix registration for CvP incapable devices
-    - Tools: hv: kvp: Fix a warning of buffer overflow with gcc 8.0.1
     - [x86] fpga: altera-cvp: fix 'bad IO access' on x86_64
     - [x86] vbox: fix link error with 'gcc -Og'
     - platform/chrome: don't report EC_MKBP_EVENT_SENSOR_FIFO as wakeup
     - i40e: prevent overlapping tx_timeout recover
     - scsi: hisi_sas: change the time of SAS SSP connection
-    - staging: iio: ad7780: update voltage on read
     - usbnet: smsc95xx: fix rx packet alignment
     - [armhf,arm64] drm/rockchip: fix for mailbox read size
     - [arm*] OMAP2+: hwmod: Fix some section annotations
@@ -53,16 +50,14 @@ linux (4.19.23-1) UNRELEASED; urgency=medium
     - media: rc: ensure close() is called on rc_unregister_device
     - media: video-i2c: avoid accessing released memory area when removing
       driver
-    - media: mtk-vcodec: Release device nodes in mtk_vcodec_init_enc_pm()
-    - staging: erofs: fix the definition of DBG_BUGON
+    - [armhf] media: mtk-vcodec: Release device nodes in
+      mtk_vcodec_init_enc_pm()
     - ptp: Fix pass zero to ERR_PTR() in ptp_clock_register
     - dmaengine: xilinx_dma: Remove __aligned attribute on zynqmp_dma_desc_ll
     - [powerpc] 32: Add .data..Lubsan_data*/.data..Lubsan_type* sections
       explicitly
-    - iio: accel: kxcjk1013: Add KIOX010A ACPI Hardware-ID
     - media: adv*/tc358743/ths8200: fill in min width/height/pixelclock
     - ACPI: SPCR: Consider baud rate 0 as preconfigured state
-    - staging: pi433: fix potential null dereference
     - f2fs: move dir data flush to write checkpoint process
     - f2fs: fix race between write_checkpoint and write_begin
     - f2fs: fix wrong return value of f2fs_acl_create
@@ -70,8 +65,8 @@ linux (4.19.23-1) UNRELEASED; urgency=medium
     - [arm64] io: Ensure calls to delay routines are ordered against prior
       readX()
     - net: aquantia: return 'err' if set MPI_DEINIT state fails
-    - sunvdc: Do not spin in an infinite loop when vio_ldc_send() returns
-      EAGAIN
+    - [sparc*] sunvdc: Do not spin in an infinite loop when vio_ldc_send()
+      returns EAGAIN
     - soc: bcm: brcmstb: Don't leak device tree node reference
     - nfsd4: fix crash on writing v4_end_grace before nfsd startup
     - drm: Clear state->acquire_ctx before leaving
@@ -84,7 +79,6 @@ linux (4.19.23-1) UNRELEASED; urgency=medium
     - [s390] zcrypt: improve special ap message cmd handling
     - mt76x0: dfs: fix IBI_R11 configuration on non-radar channels
     - [arm64] ftrace: don't adjust the LR value
-    - drm/v3d: Fix prime imports of buffers from other drivers.
     - ARM: dts: mmp2: fix TWSI2
     - ARM: dts: aspeed: add missing memory unit-address
     - [x86] fpu: Add might_fault() to user_insn()
@@ -108,8 +102,7 @@ linux (4.19.23-1) UNRELEASED; urgency=medium
     - usb: dwc3: trace: add missing break statement to make compiler happy
     - [mips] gpio: mt7621: report failure of devm_kasprintf()
     - [mips] gpio: mt7621: pass mediatek_gpio_bank_probe() failure up the stack
-    - pinctrl: sx150x: handle failure case of devm_kstrdup
-    - iommu/amd: Fix amd_iommu=force_isolation
+    - [x86] iommu/amd: Fix amd_iommu=force_isolation
     - [armhf] dts: Fix OMAP4430 SDP Ethernet startup
     - [mips] bpf: fix encoding bug for mm_srlv32_op
     - media: coda: fix H.264 deblocking filter controls
@@ -121,7 +114,6 @@ linux (4.19.23-1) UNRELEASED; urgency=medium
       payloads
     - [arm64] iommu/arm-smmu: Add support for qcom,smmu-v2 variant
     - [arm64] iommu/arm-smmu-v3: Use explicit mb() when moving cons pointer
-    - sata_rcar: fix deferred probing
     - [armhf] clk: imx6sl: ensure MMDC CH0 handshake is bypassed
     - [x86] platform: mlx-platform: Fix tachometer registers
     - cpuidle: big.LITTLE: fix refcount leak
@@ -133,9 +125,7 @@ linux (4.19.23-1) UNRELEASED; urgency=medium
     - lightnvm: pblk: add lock protection to list operations
     - i2c-axxia: check for error conditions first
     - [armhf] phy: sun4i-usb: add support for missing USB PHY index
-    - mlxsw: spectrum_acl: Limit priority value
     - udf: Fix BUG on corrupted inode
-    - switchtec: Fix SWITCHTEC_IOCTL_EVENT_IDX_ALL flags overwrite
     - selftests/bpf: use __bpf_constant_htons in test_prog.c
     - [armel] pxa: avoid section mismatch warning
     - [armhf] ASoC: fsl: Fix SND_SOC_EUKREA_TLV320 build error on i.MX8M
@@ -321,31 +311,23 @@ linux (4.19.23-1) UNRELEASED; urgency=medium
     - ath9k: dynack: check da->enabled first in sampling routines
     https://www.kernel.org/pub/linux/kernel/v4.x/ChangeLog-4.19.22
     - mtd: Make sure mtd->erasesize is valid even if the partition is of size 0
-    - mtd: spinand: Handle the case where PROGRAM LOAD does not reset the cache
-    - mtd: spinand: Fix the error/cleanup path in spinand_init()
     - mtd: rawnand: gpmi: fix MX28 bus master lockup problem
     - libata: Add NOLPM quirk for SAMSUNG MZ7TE512HMHP-000L1 SSD
-    - tools: iio: iio_generic_buffer: make num_loops signed
-    - iio: adc: axp288: Fix TS-pin handling
-    - iio: chemical: atlas-ph-sensor: correct IIO_TEMP values to millicelsius
-    - iio: ti-ads8688: Update buffer allocation for timestamps
+    - [armhf, arm64] iio: adc: axp288: Fix TS-pin handling
     - signal: Always notice exiting tasks
     - signal: Better detection of synchronous signals
-    - [arm*] misc: vexpress: Off by one in vexpress_syscfg_exec()
-    - mei: me: add ice lake point device id.
-    - samples: mei: use /dev/mei0 instead of /dev/mei
+    - [armhf, arm64] misc: vexpress: Off by one in vexpress_syscfg_exec()
+    - [x86] mei: me: add ice lake point device id.
     - debugfs: fix debugfs_rename parameter checking
-    - [armhf] pinctrl: sunxi: Correct number of IRQ banks on H6 main pin controller
-    - pinctrl: cherryview: fix Strago DMI workaround
+    - [arm64] pinctrl: sunxi: Correct number of IRQ banks on H6 main pin
+      controller
+    - [x86] pinctrl: cherryview: fix Strago DMI workaround
     - tracing: uprobes: Fix typo in pr_fmt string
     - [mips*] cm: reprime error cause
     - [mips*] OCTEON: don't set octeon_dma_bar_type if PCI is disabled
     - [mips*] VDSO: Use same -m%-float cflag as the kernel proper
     - [mips*] loongson64: remove unreachable(), fix loongson_poweroff().
     - [mips*] VDSO: Include $(ccflags-vdso) in o32,n32 .lds builds
-    - [armel] iop32x/n2100: fix PCI IRQ mapping
-    - ARM: tango: Improve ARCH_MULTIPLATFORM compatibility
-    - ARM: dts: da850: fix interrupt numbers for clocksource
     - [arm64] firmware: arm_scmi: provide the mandatory device release callback
     - [powerpc*] radix: Fix kernel crash with mremap()
     - mic: vop: Fix use-after-free on remove
