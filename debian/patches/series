@@ -80,6 +80,8 @@ bugfix/x86/x86-32-disable-3dnow-in-generic-config.patch
 bugfix/powerpc/powerpc-fix-mcpu-options-for-spe-only-compiler.patch
 bugfix/m68k/m68k-build-with-ffreestanding.patch
 bugfix/x86/x86-kvmclock-set-offset-for-kvm-unstable-clock.patch
+bugfix/arm/ARM-dts-sun8i-h3-add-sy8106a-to-orange-pi-plus.patch
+bugfix/arm64/arm64-dts-allwinner-a64-Enable-A64-timer-workaround.patch
 
 # Arch features
 features/mips/MIPS-increase-MAX-PHYSMEM-BITS-on-Loongson-3-only.patch
@@ -160,7 +162,6 @@ bugfix/x86/tools-x86_energy_perf_policy-fix-uninitialized-varia.patch
 bugfix/x86/tools-turbostat-Add-checks-for-failure-of-fgets-and-.patch
 bugfix/all/libbpf-add-soname-to-shared-object.patch
 bugfix/all/libbpf-link-shared-object-with-libelf.patch
-bugfix/riscv/tools-uapi-fix-risc-v-64-bit-support.patch
 
 # wireless: Disable regulatory.db direct loading (until we sort out signing)
 debian/wireless-disable-regulatory.db-direct-loading.patch
