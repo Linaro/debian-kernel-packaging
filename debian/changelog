@@ -1,4 +1,4 @@
-linux (4.19.21-1) UNRELEASED; urgency=medium
+linux (4.19.24-1) UNRELEASED; urgency=medium
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v4.x/ChangeLog-4.19.21
@@ -334,6 +334,19 @@ linux (4.19.21-1) UNRELEASED; urgency=medium
   * udeb: Move basic PV modules from {hyperv,virtio}-modules to kernel-image
   * udeb: Move drivers from {hyperv,virtio}-modules to
     {fb,input,nic,scsi}-modules
+
+  [ Wookey ]
+  * linux-perf: Enable coresight trace (libopencsd) support in perf
+    (Closes: #895131)
+
+  [ Vagrant Cascadian ]
+  * [armhf] Add patch from upstream fixing stability issues when cpufreq
+    is enabled on Orange Pi Plus.
+  * [armhf] Enable REGULATOR_SY8106A as module.
+  * [arm64] Add patch working around A64 timer issues.
+
+  [ dann frazier ]
+  * arm64: lockdown: Move init_lockdown() call after uefi_init()
 
  -- Ben Hutchings <ben@decadent.org.uk>  Tue, 12 Feb 2019 12:49:10 +0000
 
