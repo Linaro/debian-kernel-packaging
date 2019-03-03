@@ -1,7 +1,7 @@
+From 7be3f2a1fb94a55d3bb70d44e3f7a7bbfc45909a Mon Sep 17 00:00:00 2001
 From: David Howells <dhowells@redhat.com>
-Date: Wed, 8 Nov 2017 15:11:37 +0000
-Subject: [25/29] Lock down /proc/kcore
-Origin: https://git.kernel.org/pub/scm/linux/kernel/git/dhowells/linux-fs.git/commit?id=797378dc4498207c3abc1101cfdc9ef2581d8c71
+Date: Mon, 18 Feb 2019 12:45:02 +0000
+Subject: [PATCH 22/27] Lock down /proc/kcore
 
 Disallow access to /proc/kcore when the kernel is locked down to prevent
 access to cryptographic data.
@@ -12,11 +12,9 @@ Reviewed-by: James Morris <james.l.morris@oracle.com>
  fs/proc/kcore.c | 2 ++
  1 file changed, 2 insertions(+)
 
-diff --git a/fs/proc/kcore.c b/fs/proc/kcore.c
-index 45629f4b5402..176cf749e650 100644
 --- a/fs/proc/kcore.c
 +++ b/fs/proc/kcore.c
-@@ -549,6 +549,8 @@ read_kcore(struct file *file, char __user *buffer, size_t buflen, loff_t *fpos)
+@@ -518,6 +518,8 @@
  
  static int open_kcore(struct inode *inode, struct file *filp)
  {

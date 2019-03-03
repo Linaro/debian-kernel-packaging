@@ -18,9 +18,9 @@ are set.
 +                   include/generated/package.h
  	$(cmd_crmodverdir)
  
- archprepare: archheaders archscripts prepare1 scripts_basic
+ archprepare: archheaders archscripts prepare1 scripts
 @@ -1148,6 +1149,16 @@ define filechk_version.h
- 	echo '#define KERNEL_VERSION(a,b,c) (((a) << 16) + ((b) << 8) + (c))';)
+ 	echo '#define KERNEL_VERSION(a,b,c) (((a) << 16) + ((b) << 8) + (c))'
  endef
  
 +ifneq ($(DISTRIBUTION_OFFICIAL_BUILD),)

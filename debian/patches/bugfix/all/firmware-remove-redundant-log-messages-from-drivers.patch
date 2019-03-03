@@ -36,7 +36,7 @@ upstream submission.
 -	}
  
  	ret = UCODE_ERROR;
- 	if (*(u32 *)fw->data != UCODE_MAGIC) {
+ 	if (!verify_container(fw->data, fw->size, false))
 --- a/drivers/atm/ambassador.c
 +++ b/drivers/atm/ambassador.c
 @@ -1929,10 +1929,8 @@ static int ucode_init(loader_block *lb,

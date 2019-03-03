@@ -33,8 +33,8 @@ index a056dba5ede0..bbecdac8c463 100644
  
  ifeq ($(KBUILD_EXTMOD),)
 @@ -1116,6 +1105,17 @@ uapi-asm-generic:
- 	$(Q)$(MAKE) -f $(srctree)/scripts/Makefile.asm-generic \
- 	            src=uapi/asm obj=arch/$(SRCARCH)/include/generated/uapi/asm
+ uapi-asm-generic:
+ 	$(Q)$(MAKE) $(asm-generic)=arch/$(SRCARCH)/include/generated/uapi/asm
  
 +ifdef CONFIG_STACK_VALIDATION
 +  has_libelf := $(call try-run,\

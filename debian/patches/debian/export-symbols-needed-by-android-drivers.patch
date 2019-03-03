@@ -119,8 +119,8 @@ index 59c00ae6b928..43c4f2cfc4c6 100644
 --- a/mm/memory.c
 +++ b/mm/memory.c
 @@ -1364,6 +1364,7 @@ void zap_page_range(struct vm_area_struct *vma, unsigned long start,
- 	mmu_notifier_invalidate_range_end(mm, start, end);
- 	tlb_finish_mmu(&tlb, start, end);
+ 	mmu_notifier_invalidate_range_end(&range);
+ 	tlb_finish_mmu(&tlb, start, range.end);
  }
 +EXPORT_SYMBOL_GPL(zap_page_range);
  

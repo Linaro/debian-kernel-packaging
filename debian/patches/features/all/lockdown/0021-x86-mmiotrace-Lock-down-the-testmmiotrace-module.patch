@@ -1,7 +1,7 @@
+From 9e9365b93d5411431efd1701102f241be62cdcae Mon Sep 17 00:00:00 2001
 From: David Howells <dhowells@redhat.com>
-Date: Wed, 8 Nov 2017 15:11:36 +0000
-Subject: [23/29] x86/mmiotrace: Lock down the testmmiotrace module
-Origin: https://git.kernel.org/pub/scm/linux/kernel/git/dhowells/linux-fs.git/commit?id=20af3be0bcf6a78e3632770561fba6531dd3b444
+Date: Mon, 18 Feb 2019 12:45:01 +0000
+Subject: [PATCH 21/27] x86/mmiotrace: Lock down the testmmiotrace module
 
 The testmmiotrace module shouldn't be permitted when the kernel is locked
 down as it can be used to arbitrarily read and write MMIO space.
@@ -17,11 +17,9 @@ cc: x86@kernel.org
  arch/x86/mm/testmmiotrace.c | 3 +++
  1 file changed, 3 insertions(+)
 
-diff --git a/arch/x86/mm/testmmiotrace.c b/arch/x86/mm/testmmiotrace.c
-index f6ae6830b341..bbaad357f5d7 100644
 --- a/arch/x86/mm/testmmiotrace.c
 +++ b/arch/x86/mm/testmmiotrace.c
-@@ -115,6 +115,9 @@ static int __init init(void)
+@@ -115,6 +115,9 @@
  {
  	unsigned long size = (read_far) ? (8 << 20) : (16 << 10);
  
