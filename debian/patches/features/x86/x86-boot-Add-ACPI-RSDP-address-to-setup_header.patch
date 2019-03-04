@@ -54,7 +54,7 @@ index 5e9b826b5f62..7727db8f94bc 100644
 --- a/Documentation/x86/boot.txt
 +++ b/Documentation/x86/boot.txt
 @@ -61,6 +61,18 @@ Protocol 2.12:	(Kernel 3.8) Added the xloadflags field and extension fields
- 	 	to struct boot_params for loading bzImage and ramdisk
+ 		to struct boot_params for loading bzImage and ramdisk
  		above 4G in 64bit.
  
 +Protocol 2.13:	(Kernel 3.14) Support 32- and 64-bit flags being set in
