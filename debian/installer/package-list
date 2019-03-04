@@ -4,8 +4,7 @@
 #
 Package: kernel-image
 Provides_amd64: zlib-modules
-# we use Buster kernel with Stretch d-i (which needs virtio-modules)
-Provides_arm64: mmc-core-modules, zlib-modules, virtio-modules
+Provides_arm64: mmc-core-modules, zlib-modules
 Provides_armel: rtc-modules
 Provides_armmp: mmc-core-modules, mtd-core-modules
 Provides_i386: rtc-modules, zlib-modules
