@@ -9,6 +9,7 @@ CONFIG_STACKPROTECTOR=y
 CONFIG_STACKPROTECTOR_STRONG=y
 CONFIG_VMAP_STACK=y
 CONFIG_STRICT_KERNEL_RWX=y
+CONFIG_STRICT_MODULE_RWX=y
 
 ##
 ## file: block/Kconfig
@@ -23,7 +24,6 @@ CONFIG_BLK_DEV_THROTTLING=y
 # CONFIG_BLK_CMDLINE_PARSER is not set
 CONFIG_BLK_WBT=y
 # CONFIG_BLK_CGROUP_IOLATENCY is not set
-# CONFIG_BLK_WBT_SQ is not set
 CONFIG_BLK_WBT_MQ=y
 CONFIG_BLK_DEBUG_FS=y
 CONFIG_BLK_SED_OPAL=y
@@ -31,14 +31,6 @@ CONFIG_BLK_SED_OPAL=y
 ##
 ## file: block/Kconfig.iosched
 ##
-CONFIG_IOSCHED_DEADLINE=y
-CONFIG_IOSCHED_CFQ=y
-CONFIG_CFQ_GROUP_IOSCHED=y
-## choice: Default I/O scheduler
-# CONFIG_DEFAULT_DEADLINE is not set
-CONFIG_DEFAULT_CFQ=y
-# CONFIG_DEFAULT_NOOP is not set
-## end choice
 CONFIG_MQ_IOSCHED_DEADLINE=y
 CONFIG_MQ_IOSCHED_KYBER=m
 CONFIG_IOSCHED_BFQ=m
@@ -73,8 +65,10 @@ CONFIG_EFI_PARTITION=y
 ##
 #. Signatures are added in linux-signed
 CONFIG_MODULE_SIG_KEY=""
-#. Actually a file containing X.509 certificates, not keys
-CONFIG_SYSTEM_TRUSTED_KEYS="debian/certs/test-signing-certs.pem"
+#. Actually a file containing X.509 certificates, not keys.
+#. Whenever the filename changes, this also needs to be updated in
+#. debian/featureset-*/config
+CONFIG_SYSTEM_TRUSTED_KEYS="debian/certs/debian-uefi-certs.pem"
 
 ##
 ## file: crypto/Kconfig
@@ -1384,6 +1378,7 @@ CONFIG_HID_SENSOR_PRESS=m
 ##
 ## file: drivers/iio/resolver/Kconfig
 ##
+# CONFIG_AD2S90 is not set
 # CONFIG_AD2S1200 is not set
 
 ##
@@ -2935,14 +2930,13 @@ CONFIG_MTD_LPDDR=m
 ## file: drivers/mtd/maps/Kconfig
 ##
 # CONFIG_MTD_PHYSMAP_OF is not set
+# CONFIG_MTD_PHYSMAP_GPIO_ADDR is not set
 # CONFIG_MTD_ESB2ROM is not set
 # CONFIG_MTD_CK804XROM is not set
 CONFIG_MTD_PCMCIA=m
 # CONFIG_MTD_PCMCIA_ANONYMOUS is not set
-# CONFIG_MTD_GPIO_ADDR is not set
 CONFIG_MTD_INTEL_VR_NOR=m
 CONFIG_MTD_PLATRAM=m
-# CONFIG_MTD_LATCH_ADDR is not set
 
 ##
 ## file: drivers/mtd/nand/onenand/Kconfig
@@ -4050,9 +4044,13 @@ CONFIG_LIBERTAS_THINFIRM_USB=m
 CONFIG_WLAN_VENDOR_MEDIATEK=y
 
 ##
-## file: drivers/net/wireless/mediatek/mt76/Kconfig
+## file: drivers/net/wireless/mediatek/mt76/mt76x0/Kconfig
 ##
 CONFIG_MT76x0U=m
+
+##
+## file: drivers/net/wireless/mediatek/mt76/mt76x2/Kconfig
+##
 CONFIG_MT76x2E=m
 CONFIG_MT76x2U=m
 
@@ -4581,7 +4579,6 @@ CONFIG_RTC_DRV_AB3100=m
 ##
 CONFIG_RAID_ATTRS=m
 CONFIG_SCSI=m
-CONFIG_SCSI_MQ_DEFAULT=y
 # CONFIG_SCSI_PROC_FS is not set
 CONFIG_BLK_DEV_SD=m
 CONFIG_CHR_DEV_ST=m
@@ -4923,7 +4920,6 @@ CONFIG_ASHMEM=m
 ##
 ## file: drivers/staging/iio/resolver/Kconfig
 ##
-# CONFIG_AD2S90 is not set
 # CONFIG_AD2S1210 is not set
 
 ##
@@ -4957,11 +4953,6 @@ CONFIG_VIDEO_ZORAN_AVS6EYES=m
 ## file: drivers/staging/most/Kconfig
 ##
 # CONFIG_MOST is not set
-
-##
-## file: drivers/staging/mt29f_spinand/Kconfig
-##
-# CONFIG_MTD_SPINAND_MT29F is not set
 
 ##
 ## file: drivers/staging/rtl8188eu/Kconfig
@@ -5761,6 +5752,7 @@ CONFIG_BFS_FS=m
 CONFIG_BINFMT_ELF=y
 CONFIG_CORE_DUMP_DEFAULT_ELF_HEADERS=y
 CONFIG_BINFMT_SCRIPT=y
+# CONFIG_BINFMT_AOUT is not set
 CONFIG_BINFMT_MISC=m
 CONFIG_COREDUMP=y
 

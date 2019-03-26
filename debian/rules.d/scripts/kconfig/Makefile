@@ -2,11 +2,7 @@ PROGS = conf
 
 include $(top_rulesdir)/Makefile.inc
 
-common-objs	:= confdata.o expr.o symbol.o preprocess.o zconf.lex.o zconf.tab.o
-
-conf: conf.o $(common-objs)
-
-zconf.tab.c: zconf.lex.c
+conf: conf.o confdata.o expr.o symbol.o preprocess.o zconf.lex.o zconf.tab.o
 
 zconf.lex.o: zconf.tab.h
 
