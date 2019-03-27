@@ -62,11 +62,6 @@ CONFIG_Q40=y
 # CONFIG_BLK_DEV_INTEGRITY is not set
 
 ##
-## file: block/Kconfig.iosched
-##
-CONFIG_IOSCHED_DEADLINE=m
-
-##
 ## file: block/partitions/Kconfig
 ##
 CONFIG_PARTITION_ADVANCED=y
@@ -633,7 +628,6 @@ CONFIG_ZORRO_NAMES=y
 ## file: fs/Kconfig.binfmt
 ##
 CONFIG_BINFMT_ELF=y
-CONFIG_BINFMT_AOUT=m
 CONFIG_BINFMT_MISC=m
 
 ##
